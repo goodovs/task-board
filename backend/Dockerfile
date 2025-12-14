@@ -1,6 +1,6 @@
 FROM python:3.12-slim
 
-WORKDIR /app
+WORKDIR /app/backend
 
 COPY backend /app/backend
 COPY pyproject.toml /app/pyproject.toml
