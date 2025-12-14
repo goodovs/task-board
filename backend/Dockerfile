@@ -2,6 +2,8 @@ FROM python:3.12-slim
 
 WORKDIR /app
 
+ENV PYTHONPATH=/app
+
 COPY backend /app/backend
 
 RUN pip install --no-cache-dir fastapi uvicorn pytest httpx
