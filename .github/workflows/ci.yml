@@ -21,5 +21,5 @@ jobs:
         run: docker compose build
 
       - name: Run backend tests
-        run: docker compose run --rm backend pytest backend/tests
+        run: docker compose run --rm backend pytest
 
