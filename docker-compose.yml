@@ -1,0 +1,26 @@
+version: "3.9"
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: task-board-backend
+    ports:
+      - "8000:8000"
+    command: >
+      uvicorn backend.main:app
+      --host 0.0.0.0
+      --port 8000
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 10s
+      timeout: 2s
+      retries: 5
+
+  frontend:
+    image: node:20-slim
+    container_name: task-board-frontend
+    working_dir: /app
+    command: ["bash", "-c", "echo frontend placeholder && sleep infinity"]
+
