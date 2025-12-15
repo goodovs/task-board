@@ -1,4 +1,4 @@
-from backend.main import app
+from taskboard.main import app
 from fastapi.testclient import TestClient
 
 client = TestClient(app)
@@ -14,4 +14,9 @@ def test_get_tasks():
     response = client.get("/tasks")
     assert response.status_code == 200
     assert response.json() == []
+
+def test_add_task():
+    client.post("/tasks", json={"title": "Test"})
+    response = client.get("/tasks")
+    assert response.json() == [{"title": "Test"}]
 
